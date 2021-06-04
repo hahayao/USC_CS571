@@ -1,0 +1,6 @@
+framework module Pods_USC_FilmTests {
+  umbrella header "Pods-USC FilmTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

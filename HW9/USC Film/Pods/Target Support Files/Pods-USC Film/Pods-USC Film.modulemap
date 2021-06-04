@@ -1,0 +1,6 @@
+framework module Pods_USC_Film {
+  umbrella header "Pods-USC Film-umbrella.h"
+
+  export *
+  module * { export * }
+}
