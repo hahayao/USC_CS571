@@ -1,0 +1,79 @@
+body{
+	
+}
+#pageHead{
+	display: block;
+	width: 335px;
+	margin: auto;
+}
+
+#pageHead a{
+	display: inline-block;
+	width: 170px; 
+	height: 74px;
+	float: left;
+}
+
+#pageHead a img{
+	width: 170px; 
+	height: 74px;
+}
+
+#pageHeadShop{
+	display: inline-block;
+	height: 74px;
+	width: 165px;
+	font-family: "Times New Roman";
+	font-size: 41px;
+	font-weight: bold;
+	margin: 0;
+	padding-top: 12px;
+}
+
+#pageTable table{
+	width: 600px;
+	margin: auto;
+}
+
+#pageTable table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#pageTable td{
+	border-top: 1px solid #e7e7e7;
+	border-collapse: collapse;
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#pageTable th{
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+}
+
+#pageTable table label{
+	font-weight: bold;
+}
+
+#pageTable table .tableBtn{
+	text-align: center;
+	border-radius: 4px;
+	background-color: #e7e7e7;
+	padding: 3px;
+}
+
+#pageTable table .tableBtn:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+#pageTable table input[type = number]{
+    width: 40px;
+}
+
+#pageTable table select, option{
+	text-align-last: center;
+}

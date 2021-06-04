@@ -1,0 +1,110 @@
+body{
+	background-color: blue;
+	margin: 0px 0px 0px 0px;
+	overflow: scoll;
+}
+#bluebg{
+	height: 656px;
+	width: 730px;
+	background-color: rgb(108, 252, 254);
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	vertical-align: middle;
+}
+#verticalBar{
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+}
+#WPhead{
+	height: 99px;
+	width: 680px;
+	background-image: url("header.png");
+	margin:auto;
+	overflow: hidden;
+}
+#h1font{
+	font-family: Georgia;
+	font-weight: bold;
+	font-size: 32px;
+	color: rgb(37, 47, 52);
+	margin-left: 33px;
+	padding-top: 20px;
+	font-stretch: normal;
+}
+#WPSecondLine{
+	height: 57px;
+	width: 680px;
+	background-image: url("bar.png");
+	margin:auto;
+}
+#horizontalBar{
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	//margin-left: 50px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center;
+}
+.barbutton{
+	display: block;
+	float: left;
+	height: 58px;
+	width: 120px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center;
+	margin: 0 auto;
+}
+.barbutton a{
+	display: block;
+	color: rgb(39, 47, 51);
+	margin: 0;
+	text-decoration: none;
+	font-family: Geneva;
+	font-size: 14px;
+	font-stretch: normal;
+	font-weight: bold;
+}
+.linkFormat{
+	height: 58px;
+	width: 120px;
+	display: grid;
+    vertical-align: middle;
+	align-items: center;
+}
+#articleTitle{
+	width: 680px;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-left: 48px;
+	padding-bottom: 6px;
+}
+.aTformat{
+	font-family: Verdana;
+	color: rgb(49, 72, 103);
+	font-weight:600;
+	font-size: 24px;
+	font-stretch: normal;
+}
+#articlePara1{
+	width: 680px;
+	margin: 0 auto;
+	padding-left: 48px;
+	padding-top: 8px;
+}
+#articlePara2{
+	width: 680px;
+	margin: 0 auto;
+	padding-left: 48px;
+	padding-top: 6px;
+}
+.paraformat{
+	font-family: Arial;
+	font-size: 13px;
+}

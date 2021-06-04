@@ -1,0 +1,38 @@
+
+<div [hidden] = "showWatch">
+  <div class = "mt-2 mb-5 text-center">
+    <h1>No items found in Watchlist.</h1>
+  </div>
+</div>
+
+<div [hidden] = "!showWatch">
+    <div class = "mt-2 mb-5">
+      <h1>My WatchList</h1>
+    </div>
+<div>
+
+
+  <div class = "mt-2 mb-5">
+
+      <div ngbSlide *ngFor="let group of watchFormatted">
+        <div class="row row-cols-1 row-cols-md-6">
+  
+            <div *ngFor="let game of group">
+              <div class = "col mb-2">
+                <div class = "showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                  <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                  <div class = "showfont">
+                    <div class="d-none d-md-block showfont text-center">
+                      <h5>{{game.title}}</h5>
+                    </div>
+                  </div>
+              </div>
+  
+            </div>
+  
+        </div>  
+        </div>
+      </div>
+  </div>
+</div>
+</div>

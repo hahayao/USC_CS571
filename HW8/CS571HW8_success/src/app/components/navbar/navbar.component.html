@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <a class="navbar-brand" routerLink = "/">USC Films</a>
+      <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mb-lg-0 text-right">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link " routerLink = "/" >Home</a>
+          </li>
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link " routerLink = "/mylist" >MyList</a>
+          </li>
+        </ul>
+      
+
+        <!--input type="text" #searchbar (keyup)="fetchSeries($event)" [(ngModel)]="searchInput" placeholder="Search" />
+        <ul>
+          <li *ngFor="let show of retreiveResult">
+             <p> {{ show.title }}</p>
+          </li>
+        </ul>
+      <p>{{searchInput}}</p-->
+        
+          
+
+            <ng-template #rt let-r="result" let-t="term" ng-if="!searchFailed">
+              <div style = "color: white;">
+                <img [src]="r['path']" class="mr-1" style="width: 50px">
+              <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+              </div>
+              
+            </ng-template>
+            <input id="NavbarComponent"
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="model" 
+            [ngbTypeahead]="search" 
+            [resultTemplate]="rt"
+            [inputFormatter]="formatter" 
+    
+            placeholder="Search"
+            (selectItem)="setModel($event)"/>
+         
+        </div>
+        
+          
+        
+<!--pre>Model: {{ model | json }}</pre-->
+  </nav>

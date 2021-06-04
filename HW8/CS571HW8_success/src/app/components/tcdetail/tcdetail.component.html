@@ -1,0 +1,233 @@
+
+<div class = "container mt-5 mb-5">
+  <div class="row">
+    <div class = "col-md-8 embed-responsive embed-responsive-16by9" >
+      <youtube-player [videoId] = videoId suggestedQuality = "highres" [height] = 400 class="embed-responsive-item"></youtube-player>
+    </div>
+    <div class = "col-md-4">
+      <div style = "font-size: 48px;">{{searchDetail.title}}</div>
+      <div style = "font-size: 20px;"><i>{{searchDetail.tagline}}</i></div>
+      <div style = "font-size: 20px; padding-top: 18px; padding-bottom: 10px;">{{searchDetail.release_date}} | &#9733;{{searchDetail.vote_average}} | {{searchDetail.runtime}}</div>
+      <div style = "font-size: 14px;">Genres: {{searchDetail.genres}}</div>
+      <div style = "font-size: 14px; padding-bottom: 18px;">{{searchDetail.spoken_languages}}</div>
+      <button class="btn btn-primary" (click)="changeSuccessMessage($event.target)">{{buttonName}}</button>
+      <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="typeName" (closed)="successMessage = ''" style = "margin-top: 18px;">{{ successMessage }}
+      </ngb-alert>
+    </div>
+  </div>
+  <div class = " mt-5 mb-5">
+    <h4>Description</h4>
+    <div style = "color: gray;">{{searchDetail.overview}}</div>
+
+    <div class = "mt-5 mb-5">
+    <h4>Share</h4>
+    <a class="twitter-share-button" [href]='"https://twitter.com/intent/tweet?" + twitterText' target="_blank"><i class="fa fa-twitter fa-2x"></i></a>&nbsp;&nbsp;
+    <a [href] = "facebookText" target="_blacnk"><i class="fa fa-facebook-square fa-2x"></i></a>
+  </div>
+  </div>
+
+
+<!--button id="btnSubmit" class="btn btn-primary" value = "R" (click) = "accessStorage($event.target)">Add to Watchlist</button-->
+
+<!--div id = "myAlertAdd" class="alert alert-success alert-dismissible" role="alert" collapse="true">
+    Added to Watchlist
+    <button type="button" id="addlinkClose" class="close" data-bs-dismiss="alert" aria-label="Close" >&times;</button>
+</div>
+
+<div id = "myAlertRemove" class="alert alert-danger alert-dismissible" role="alert" collapse="false">
+    Removed from Watchlist
+    <button type="button" id="removelinkClose" class="close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+</div>
+<ngb-alert [type]="success" (closed)="close(alert)">{{ alert.message }}</ngb-alert-->
+
+  <div class = "m-2">
+    <h3>Full cast and crew</h3>
+  </div>
+
+  <div class="container-fluid py-2">
+    <div class="d-flex flex-row flex-nowrap overflow-auto card-deck">
+      <div *ngFor="let curcard of cards"> 
+        <div class="card" data-toggle="modal" data-target="#exampleModalCenter" (click) = "accessCastDetail(curcard.id)">
+          <img [src]="curcard.profile_path" alt="Card image cap" class = "card-img-top" style = "width: 200px;">
+        <div class="card-body" style = "height: 10%; color:black;">
+          <div class="card-title" style = "text-align: center; font-weight: bold;">{{curcard.name}}</div>
+          <p class="card-text" style = "text-align: center; font-weight: bold;">As</p>
+          <div class="card-title" style = "text-align: center;"> {{curcard.character}}</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style = "color: black;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{castInfo.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class = "col-md-3"><img [src]="castInfo.profile_path" style = "width: 100%;">
+          </div>
+          <div class = "col-md-9">
+            <div [hidden]="checkcastShow.birthday"><p>Birth:{{castInfo.birthday}}</p></div>
+            <div [hidden]="checkcastShow.place_of_birth"><p>Birth Place:{{castInfo.place_of_birth}}</p></div>
+            <div [hidden]="checkcastShow.gender"><p>Gender:{{castInfo.gender}}</p></div>
+            <div [hidden]="checkcastShow.homepage"><p>Website:<a [href]="castInfo.homepage" [target]="'_blank'">{{castInfo.homepage}}</a></p></div>
+            <div [hidden]="checkcastShow.known_for_department"><p>Known for:{{castInfo.known_for_department}}</p></div>
+            <div [hidden]="checkcastShow.also_known_as"><p>Also known as:{{castInfo.also_known_as}}</p></div>
+            <div>
+            <div class="d-flex">
+              <div [hidden]="checkLinkInfo.imdb_id" class="p-1"><a [href]="castLinkInfo.imdb_id" [target]="'_blank'" class="tooltip-test" title="Visit IMDB"><i class="fa fa-imdb fa-2x" style="color:orange;"></i></a></div>
+              <div [hidden]="checkLinkInfo.instagram_id" class="p-1"><a [href]="castLinkInfo.instagram_id" [target]="'_blank'" class="tooltip-test" title="Visit Instagram"><i class="fa fa-instagram fa-2x" style="color:purple;"></i></a></div>
+              <div [hidden]="checkLinkInfo.facebook_id" class="p-1"><a [href]="castLinkInfo.facebook_id" [target]="'_blank'" class="tooltip-test" title="Visit Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></div>
+              <div [hidden]="checkLinkInfo.twitter_id" class="p-1"><a [href]="castLinkInfo.twitter_id" [target]="'_blank'" class="tooltip-test" title="Visit Twitter"><i class="fa fa-twitter fa-2x"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class = "container">
+          <div [hidden]="checkcastShow.birthday"><h3>Biography</h3>
+            <p>{{castInfo.biography}}</p>
+          </div>
+        </div>
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div [hidden] = "showReviews" class = "mb-5 mt-5">
+  <h2>Reviews&nbsp;&nbsp;<span style = "color:gray">{{reviewsNumber}}</span></h2>
+  <div *ngFor="let curreview of reviews">
+  <div class="card p-2 m-2" style = "color: black;">
+    
+      <div class="card-body row">
+        <div class = "col-md-3">
+          <img [src]="curreview.avatar_path" style = "width: 50%;">
+        </div>
+        <div class = "col-md-9">
+          <div>
+            <div style = "font-weight: bold; display: inline-block;" class = "m-2">
+              {{curreview.author}}
+            </div>
+            <div style = "display: inline-block; background-color: black; color: white; border-radius: 10px; width: 5%; text-align: center;">
+              &#10029;{{curreview.rating}}
+            </div>
+          </div>
+          <div class = "m-2" style = "color:gray;">
+            {{curreview.created_at}}
+          </div>
+          <div class = "m-2">
+            <p style = "
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;">{{curreview.content}}</p>
+          </div>
+          <div class = "m-2">
+            <a [href] = "curreview.url" [target]="'_blank'">Read the rest</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [hidden] = "showRecommend" class = "m-2">
+  
+  <div class = "mt-2 mb-5">
+    <h1>Recommmended TV Shows</h1>
+  </div>
+  <!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of recommend">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+
+  <div class = "mt-2 mb-5">
+    <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+      <ng-template ngbSlide *ngFor="let group of gamesFormatted">
+        <div class="row row-cols-1 row-cols-md-6">
+  
+            <div *ngFor="let game of group">
+              <div class = "col mb-2">
+                <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.id)" [id] = "game.id"> 
+                  <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                  <div class = "showfont">
+                    <div class="carousel-caption d-none d-md-block showfont">
+                      <h3 ngMo>{{game.title}}</h3>
+                    </div>
+                  </div>
+              </div>
+  
+            </div>
+  
+        </div>  
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+</div>
+
+
+
+<div [hidden] = "showSimilar" class = "m-2">
+  <div class = "mt-2 mb-5">
+    <h1>Similar TV Shows</h1>
+  </div> 
+
+  <!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of similar">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+  <div class = "mt-2 mb-5">
+    <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+      <ng-template ngbSlide *ngFor="let group of similarFormatted">
+        <div class="row row-cols-1 row-cols-md-6">
+  
+            <div *ngFor="let game of group">
+              <div class = "col mb-2">
+                <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.id)" [id] = "game.id"> 
+                  <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                  <div class = "showfont">
+                    <div class="carousel-caption d-none d-md-block showfont">
+                      <h3 ngMo>{{game.title}}</h3>
+                    </div>
+                  </div>
+              </div>
+  
+            </div>
+  
+        </div>  
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>

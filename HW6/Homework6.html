@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Homework6.css">
+	<title>
+		Homework 6
+	</title>
+</head>
+<body>
+	<div id = "pageHead">
+		<a href = "https://www.ebay.com">
+			<img src = "eBayLogo.png">
+		</a>
+		<div id = "pageHeadShop">
+			Shopping
+		</div>
+	</div>
+	<form onsubmit = "searchFunction();return false;">
+		<div id = "pageTable">
+			<table>
+				<tr>
+					<th>
+						<label for = "keyWords">Key Words<span style = "color: red;">*</span>:
+						</label>
+						<input type="text" id="keyWords" name="keyWords" required autocomplete="on">
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<label for = "priceRange">Price Range:</label>
+						&nbsp;&nbsp;From
+						<input type = "number" id = "priceRangeLow" name = "priceRangeLow">
+						to
+						<input type = "number" id = "priceRangeHigh" name = "priceRangeHigh">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = "condition">Condition:</label>
+						<input type = "checkbox" id = "condition0" name = "condition0">New
+						<input type = "checkbox" id = "condition1" name = "condition1">Used
+						<input type = "checkbox" id = "condition2" name = "condition2">Very Good
+						<input type = "checkbox" id = "condition3" name = "condition3">Good
+						<input type = "checkbox" id = "condition4" name = "condition4">Acceptable
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = "seller">Seller:</label>
+						<input type = "checkbox" id = "seller" name = "seller">Return Accepted
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = "shipping">Shipping:</label>
+						<input type = "checkbox" id = "shipping0" name = "shipping0">Free
+						<input type = "checkbox" id = "shipping1" name = "shipping1">Expedited
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = "sortby">Sort by:</label>
+					    <select id="sortby" name="sortby" value = "sortby0">
+					       <option value="sortby0">Best Match</option>
+					       <option value="sortby1">Price: highest first</option>
+					       <option value="sortby2">Price + Shipping: highest first</option>
+					       <option value="sortby3">Price + Shipping: lowest first</option>
+					     </select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onclick="clearFunction()" type = "button" class = "tableBtn">
+							Clear
+						</button>
+						<button type = "submit" class = "tableBtn">
+							Search
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<script>
+		function clearFunction(){
+			document.getElementById("keyWords").value = null;
+			document.getElementById("priceRangeLow").value = null;
+			document.getElementById("priceRangeHigh").value = null;
+			document.getElementById("condition0").checked = false;
+			document.getElementById("condition1").checked = false;
+			document.getElementById("condition2").checked = false;
+			document.getElementById("condition3").checked = false;
+			document.getElementById("condition4").checked = false;
+			document.getElementById("seller").checked = false;
+			document.getElementById("shipping0").checked = false;
+			document.getElementById("shipping1").checked = false;
+			document.getElementById("sortby").options[0].selected = true;
+		}
+		function searchFunction(){
+			/*var checkpriceRangeLow = document.getElementById("priceRangeLow").value;
+			var checkpriceRangeHigh = document.getElementById("priceRangeHigh").value;
+			if(checkpriceRangeLow != null && checkpriceRangeLow < 0 ||
+				checkpriceRangeHigh != null && checkpriceRangeHigh < 0){
+					alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0");
+					return false;
+			}
+			else if(checkpriceRangeLow != null && checkpriceRangeHigh != null &&
+				checkpriceRangeLow > checkpriceRangeHigh){
+					alert("Oops! Lower price limit cannor be greater than upper price limit! Please try again.");
+					return false;
+			}
+			
+			var string0 = "&keywords=" + document.getElementById("keyWords").value;
+			var string1;
+			var checked;
+			for(checked = 0; checked < 4; checked++){
+				if(document.getElementById("sortby").options[checked].selected == true){
+					//string2 += document.getElementById("sortby").options[a];
+					break;
+				}
+			}
+			
+			switch(checked){
+			case 0:
+				string1 = "&sortOrder=BestMatch";
+				break;
+			case 1:
+				string1 = "&sortOrder=CurrentPriceHighest";
+				break;
+			case 2:
+				string1 = "&sortOrder=PricePlusShippingHighest";
+				break;
+			case 3:
+				string1 = "&sortOrder=PricePlusShippingLowest";
+				break;
+			}
+			
+			var itemNumCount = 0;
+			var string2 = "";
+			if(checkpriceRangeLow != null){
+				string2 += "&itemFilter(" + itemNumCount + ").name=MinPrice&itemFilter(" + itemNumCount + ").value=" + 							checkpriceRangeLow + "&itemFilter(" + itemNumCount + ")" + 							".paramName=Currency&itemFilter(" + itemNumCount + ").paramValue=USD";
+				//console.log(string2);
+				itemNumCount++;
+			}
+			
+			if(checkpriceRangeHigh != null){
+				string2 += "&itemFilter(" + itemNumCount + ").name=MaxPrice&itemFilter(" + itemNumCount + ").value=" + 							checkpriceRangeHigh + "&itemFilter(" + itemNumCount + ")" + 							".paramName=Currency&itemFilter(" + itemNumCount + ").paramValue=USD";
+				itemNumCount++;
+			}
+			
+			string2 += "&itemFilter(" + itemNumCount + ").name=ReturnsAcceptedOnly&itemFilter(" + itemNumCount + ").value=" + 						document.getElementById("seller").checked;
+			itemNumCount++;
+			
+			string2 += "&itemFilter(" + itemNumCount + ").name=FreeShippingOnly&itemFilter(" + itemNumCount + ").value=" + 						document.getElementById("shipping0").checked;
+			itemNumCount++;
+			
+			if(document.getElementById("shipping1").checked){
+				string2 += "&itemFilter(" + itemNumCount + ").name=ExpeditedShippingType&itemFilter(" + itemNumCount + ").value=Expedited";
+				itemNumCount++;
+			}
+			
+			var conditions = [document.getElementById("condition0").checked, 
+								document.getElementById("condition1").checked, 								document.getElementById("condition2").checked,
+								document.getElementById("condition3").checked,
+								document.getElementById("condition4").checked];
+			var conditionsNumber = [1000, 3000, 4000, 5000, 6000];
+			
+			if((conditions[0] | conditions[1] | conditions[2] | conditions[3] | conditions[4]) != false){
+				string2 += "&itemFilter(" + itemNumCount + ").name=Condition";
+				var conditionCount = 0;
+				for(var a = 0; a < 5; a++){
+					if(conditions[a] == true){
+						string2 += "&itemFilter(" + itemNumCount + ").value(" + conditionCount + ")=" + conditionsNumber[a];
+						conditionCount++;
+					}
+				}
+			}
+			console.log(string2);
+			var url = 'https://example.com/profile';
+			var data = {username: 'example'};*/
+
+
+			/*var myInit = { method: 'GET',
+			headers:{"Content-Type":"application/json"}, };
+
+			var myRequest = new Request('http://127.0.0.1:5000', myInit);
+
+			fetch(myRequest).then(function(response) {
+			  return response.blob();
+			}).then(function(myBlob) {
+			  var objectURL = URL.createObjectURL(myBlob);
+			  myImage.src = objectURL;
+			});*/
+
+			/*fetch('http://127.0.0.1:5000')
+			.then(response=>response.json())
+			.then(data=>console.log('success'))
+			.catch(error=>console.log('error'));
+			/*fetch("http://127.0.0.1:5000")
+			.then(response => response.json())
+			.then(data => console.log(data))
+			.catch(function(err){
+			alert(err)
+			});*/
+			/*fetch('http://127.0.0.1:5000', {
+			  credentials: 'include'  
+			}
+			.catch(function(err)){
+			alert(err)
+			});*/
+			/*fetch(`http://127.0.0.1:5000`, {
+			    method: 'GET',
+			  })
+			  .then(response => {
+			    response.json().then(data => {
+			      doStuff(data);
+			    })
+			  })*/
+				
+				    console.log("ready to submit");
+				    fetch("http://127.0.0.1:5000", {
+				        method: "GET",
+
+				    }).then(function(response) {
+				        return response.json();
+				    });
+			return false;
+		}
+		
+	</script>
+</body>
+</html>

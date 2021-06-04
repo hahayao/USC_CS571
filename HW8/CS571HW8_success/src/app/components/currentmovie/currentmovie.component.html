@@ -1,0 +1,26 @@
+
+<div class = "pt-4 pb-4" style = "border-color: rgb(5, 8, 41);">
+  <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" style = "border-color: rgb(5, 8, 41);">
+    <ng-template ngbSlide *ngFor="let arr of routerLinkArray; index as i">
+
+        
+        <div (click)="routeToDetail(arr.ids)">
+          <div class="picsum-img-wrapper" class = "showzoomin" style = "border: none;">
+            <img [src]="arr.images" style = "width: 100%; border: none;">
+            <div  class = "showfont">
+              <div class="carousel-caption d-none d-md-block text-left">
+                <p ngMo>{{arr.titles}}</p>
+              </div>
+            </div>
+            </div>
+          </div>
+      
+    </ng-template>
+  </ngb-carousel>
+</div>
+  
+  
+  <hr>
+
+  
+  

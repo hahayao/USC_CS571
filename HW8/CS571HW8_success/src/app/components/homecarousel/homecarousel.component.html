@@ -1,0 +1,298 @@
+
+<div [hidden] = "showContinue">
+    <div class = "mt-2 mb-5">
+      <h1>Continue Watching</h1>
+    </div>
+    <!-- Mobile section : one image per slide -->
+    <ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+      <ng-template ngbSlide *ngFor="let game of watch">
+              <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+                  <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+                  <div class = "showfont">
+                    <div class="carousel-caption d-none d-md-block showfont">
+                      <h3 ngMo>{{game.title}}</h3>
+                    </div>
+                  </div>
+              </div>
+      </ng-template>
+  </ngb-carousel>
+    <!-- Desktop section : multiple images per slide -->
+
+    <div class = "mt-2 mb-5">
+      <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+        <ng-template ngbSlide *ngFor="let group of watchFormatted">
+          <div class="row row-cols-1 row-cols-md-6">
+
+              <div *ngFor="let game of group">
+                <div class = "col mb-2">
+                  <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                    <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                    <div class = "showfont">
+                      <div class="carousel-caption d-none d-md-block showfont">
+                        <h3 ngMo>{{game.title}}</h3>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+
+          </div>  
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+ </div>
+
+  <!-- Popular Movies-->
+  <div class = "mt-2 mb-5">
+    <h1>Popular Movies</h1>
+  </div>
+    <!-- Mobile section : one image per slide -->
+    <ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+      <ng-template ngbSlide *ngFor="let game of similar">
+              <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+                  <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+                  <div class = "showfont">
+                    <div class="carousel-caption d-none d-md-block showfont">
+                      <h3 ngMo>{{game.title}}</h3>
+                    </div>
+                  </div>
+              </div>
+      </ng-template>
+    </ngb-carousel>
+    <!-- Desktop section : multiple images per slide -->
+
+    <div class = "mt-2 mb-5">
+      <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+        <ng-template ngbSlide *ngFor="let group of similarFormatted">
+          <div class="row row-cols-1 row-cols-md-6">
+
+              <div *ngFor="let game of group">
+                <div class = "col mb-2">
+                  <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                    <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                    <div class = "showfont">
+                      <div class="carousel-caption d-none d-md-block showfont">
+                        <h3 ngMo>{{game.title}}</h3>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+
+          </div>  
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+
+<!-- Top Rated Movies-->
+<div class = "mt-2 mb-5">
+  <h1>Top Rated Movies</h1>
+</div>
+<!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of popular">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+  <div class = "mt-2 mb-5">
+    <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+      <ng-template ngbSlide *ngFor="let group of popularFormatted">
+        <div class="row row-cols-1 row-cols-md-6">
+
+            <div *ngFor="let game of group">
+              <div class = "col mb-2">
+                <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                  <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                  <div class = "showfont">
+                    <div class="carousel-caption d-none d-md-block showfont">
+                      <h3 ngMo>{{game.title}}</h3>
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+
+        </div>  
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <!-- Trending Movies-->
+<div class = "mt-2 mb-5">
+  <h1>Trending Movies</h1>
+</div>
+<!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of trending">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+<div class = "mt-2 mb-5">
+  <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+    <ng-template ngbSlide *ngFor="let group of trendingFormatted">
+      <div class="row row-cols-1 row-cols-md-6">
+
+          <div *ngFor="let game of group">
+            <div class = "col mb-2">
+              <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                <div class = "showfont">
+                  <div class="carousel-caption d-none d-md-block showfont">
+                    <h3 ngMo>{{game.title}}</h3>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+      </div>  
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<!-- Popular TV Shows-->
+<div class = "mt-2 mb-5">
+  <h1>Popular TV Shows</h1>
+</div>
+<!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of tvpopular">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+<div class = "mt-2 mb-5">
+  <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+    <ng-template ngbSlide *ngFor="let group of tvpopularFormatted">
+      <div class="row row-cols-1 row-cols-md-6">
+
+          <div *ngFor="let game of group">
+            <div class = "col mb-2">
+              <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                <div class = "showfont">
+                  <div class="carousel-caption d-none d-md-block showfont">
+                    <h3 ngMo>{{game.title}}</h3>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+      </div>  
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<!-- Top Rated TV Shows-->
+<div class = "mt-2 mb-5">
+  <h1>Top Rated TV Shows</h1>
+</div>
+<!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of tvtop">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+<div class = "mt-2 mb-5">
+  <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+    <ng-template ngbSlide *ngFor="let group of tvtopFormatted">
+      <div class="row row-cols-1 row-cols-md-6">
+
+          <div *ngFor="let game of group">
+            <div class = "col mb-2">
+              <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                <div class = "showfont">
+                  <div class="carousel-caption d-none d-md-block showfont">
+                    <h3 ngMo>{{game.title}}</h3>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+      </div>  
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+  <!-- Trending TV show-->
+<div class = "mt-2 mb-5">
+  <h1>Trending TV Shows</h1>
+</div>
+<!-- Mobile section : one image per slide -->
+<ngb-carousel *ngIf="mobile" [showNavigationArrows]=true [showNavigationIndicators]=false>
+  <ng-template ngbSlide *ngFor="let game of tvtrending">
+          <div class="col-xs-3 col-md-3 col-lg-3 col-sm-6" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id">
+              <img [src]="game.poster_path" class = "card-img-top" style = "width: 100%; padding: none;">
+              <div class = "showfont">
+                <div class="carousel-caption d-none d-md-block showfont">
+                  <h3 ngMo>{{game.title}}</h3>
+                </div>
+              </div>
+          </div>
+  </ng-template>
+</ngb-carousel>
+<!-- Desktop section : multiple images per slide -->
+<div class = "mt-2 mb-5">
+  <ngb-carousel  *ngIf="!mobile" [showNavigationArrows]=true [showNavigationIndicators]=true>
+    <ng-template ngbSlide *ngFor="let group of tvtrendingFormatted">
+      <div class="row row-cols-1 row-cols-md-6">
+
+          <div *ngFor="let game of group">
+            <div class = "col mb-2">
+              <div class = "card showzoomin" style="border: none" (click)="routeToDetail(game.type[0] + game.id)" [id] = "game.id"> 
+                <img [src]="game.poster_path" style = " width: 100%;padding: none;">
+                <div class = "showfont">
+                  <div class="carousel-caption d-none d-md-block showfont">
+                    <h3 ngMo>{{game.title}}</h3>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+      </div>  
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
